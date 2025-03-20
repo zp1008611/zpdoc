@@ -124,25 +124,17 @@ $$
 & \quad \lambda_r \geq 0, & \quad r \in \overline{\mathcal{R}}. \quad (3.9)
 \end{alignat*}
 $$  
-注意，RMP 是（3.1）–（3.4）的线性松弛，但仅考虑变量的一个子集. 设 $ u = (u_1, \dots, u_n) \in \mathbb{R}^n $ 和 $ \sigma \geq 0 $ 分别为与约束（3.7）和（3.8）相关的对偶变量. 在列生成方法的每次迭代中，我们求解 RMP 以获得对偶解 $(\bar{u}, \bar{\sigma})$，该解用于生成尚未在 RMP 中的列. 这些列与通过求解以下子问题得到的可行路径相关：  
+注意，RMP 是（3.1）–（3.4）的线性松弛，但仅考虑变量的一个子集. 设 $ u = (u_1, \dots, u_n) \in \mathbb{R}^n $ 和 $ \sigma \geq 0 $ 分别为与约束（3.7）和（3.8）相关的对偶变量. 在列生成方法的每次迭代中，我们求解(RMP)以获得对偶解 $(\bar{u}, \bar{\sigma})$，该解用于生成尚未在 (RMP)中的变量/列$\lambda_{r}(r\in\mathcal{R}\backslash \overline{\mathcal{R}})$. 需要加入的列的对应下标$r$通过求解以下子问题得到：  
 $$
-\min_{r \in \mathcal{R}} rc(\bar{u}, \bar{\sigma}) = \sum_{i \in N} \sum_{j \in N} (c_{ij} - \bar{u}_i)x_{rij} - \bar{\sigma} \quad (3.10)
+\overline{s}=\min_{r\in\mathcal{R}} c_r - \sum_{i \in \mathcal{C}} \overline{u}_i a_{ri} - \overline{\sigma} =\sum_{i \in \mathcal{N}} \sum_{j \in \mathcal{N}} (c_{ij} - \bar{u}_i)x_{rij} - \bar{\sigma} \quad (3.10)
 $$
 
-其中，$\bar{u}_0 = \bar{u}_{n+1} = 0$，且 $x_r = \{x_{rij}\}_{i,j \in N}$ 是一个二进制向量，当且仅当路径 $r \in \mathcal{R}$ 访问节点 $i$ 并直接前往节点 $j$ 时，$x_{rij} = 1$. 这个子问题是一个**资源受限基本最短路问题（RCESPP）**. 设 $\bar{x}_r$ 与子问题的最优路径 $r$ 相关联. 如果对应值 $rc(\bar{u}, \bar{\sigma})$ 为负，则可将新变量 $\lambda_r$ 添加到 RMP 中. 实际上，$rc(\bar{u}, \bar{\sigma})$ 是这个新变量的**约简成本**，其成本和列系数如下：  
-$$
-c_r := \sum_{i \in N} \sum_{j \in N} c_{ij}\bar{x}_{rij},
-$$  
-$$
-a_{ri} := \sum_{j \in N} \bar{x}_{rij},\ i \in \mathcal{C}.
-$$  
-因此，$r$ 被添加到 $\overline{\mathcal{R}}$ 中，并且必须重新求解新的 RMP. 如果 $rc(\bar{u}, \bar{\sigma})$ 非负，且 $(\bar{u}, \bar{\sigma})$ 是当前 RMP 的最优对偶解，那么当前 RMP 的最优解对于主问题（MP）的线性松弛也是最优的. 至此，列生成方法成功终止.   
+其中，$\bar{u}_0 = \bar{u}_{n+1} = 0$，且 $x_r = \{x_{rij}\}_{i,j \in N}$ 是一个二进制向量，当且仅当路径 $r \in \mathcal{R}$ 访问节点 $i$ 并直接前往节点 $j$ 时，$x_{rij} = 1$. 这个子问题是一个**资源受限基本最短路问题（ESPPRC）**. 若$\overline{s}$为负数且有限，则$\lambda_{\overline{r}}$ 被添加到(RMP)中，然后重新求解新的(RMP). 如果$\overline{s}$ 非负，且 $(\bar{u}, \bar{\sigma})$ 是当前 RMP 的最优对偶解，那么当前(RMP)的最优解对于主问题（MP）的线性松弛也是最优的. 至此，列生成方法终止. （注意：只要求出最小成本路径加入(RMP)即可，下标$r$无需求出，这里只是为了保证理论严谨）.
 
-列生成算法的计算实现性能在很大程度上取决于 RMP 和子问题的求解方式. 为确保成功，实现过程应快速求解 RMP，并使用稳定的对偶解以减少总迭代次数. 有效求解 RCESPP 也是列生成算法处理 VRP 变体的重要要求. 尽管存在 RCESPP 的整数规划公式，但当前最先进的优化求解器无法有效求解它们. 目前最佳策略是使用基于动态规划的**标签设置算法**. 
+列生成算法的计算实现性能在很大程度上取决于 RMP 和子问题的求解方式. 为确保成功，实现过程应快速求解 RMP，并使用稳定的对偶解以减少总迭代次数. 有效求解 ESPPRC 也是列生成算法处理 VRP 变体的重要要求. 尽管存在 ESPPRC 的整数规划公式，但当前最先进的优化求解器无法有效求解它们. 目前最佳策略是使用基于动态规划的**标签设置算法**. 
 
-
->求(RMP)对偶问题为
-
+> ---
+>求解(RMP)对偶问题：$\\$
 >引入拉格朗日乘子 $ u_i $（对应等式约束 $ \sum_{r \in \overline{\mathcal{R}}} a_{ri} \lambda_r = 1 $）和 $ \sigma \geq 0 $（对应不等式约束 $ \sum_{r \in \overline{\mathcal{R}}} \lambda_r \leq K $），拉格朗日函数为：  
 >$$
 L(\lambda, u, \sigma) = \sum_{r \in \overline{\mathcal{R}}} c_r \lambda_r + \sum_{i \in \mathcal{C}} u_i \left(1 - \sum_{r \in \overline{\mathcal{R}}} a_{ri} \lambda_r \right) + \sigma \left(K - \sum_{r \in \overline{\mathcal{R}}} \lambda_r \right).
@@ -164,7 +156,17 @@ $$
 \end{alignat*}
 $$  
 > 根据[行生成和列生成在大规模线性规划中的使用](../../or_exact/LP_large_scale_models/README.md)的列生成算法，假设对偶问题的最优解为$(\overline{u},\overline{\sigma})$，那么子问题求解
+>$$
+\overline{r} = \arg\min_{r\in\mathcal{R}} c_r - \sum_{i \in \mathcal{C}} \overline{u}_i a_{ri} - \overline{\sigma} 
+$$
  
+> ----
+
+> 为什么(3.10)是一个资源受限基本最短路问题（ESPPRC）？$\\$
+> 该问题被认定为资源受限基本最短路径问题（ESPPRC），原因如下：  
+> 资源受限体现在：(3.10)的可行解需要对应CVRP的可行路径，受到载重约束、路径联通约束的限制.   
+> 基本最短路径体现在：目标函数 $ \bar{s} = \min_{r \in \mathcal{R}} c_r - \sum_{i \in C} \bar{u}_i a_{ri} - \bar{\sigma} $ 本质是在资源约束下寻找成本最低的可行路径.
+
 
 
 
