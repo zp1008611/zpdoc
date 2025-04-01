@@ -20,7 +20,7 @@ This website is aimed to record my learning experience.
 
    Start Sphinx<sphinx_config/index>
    Git<git/index>
-   Liunx, C and CPP<linux_c_cpp/index>  
+   Liunx Config<linux_config/index>  
    Liunx, QT and VTK<linux_qt_vtk/index>
    Liunx Solver<linux_solver_config/index>
    Docker<docker_learning/index>
@@ -38,7 +38,7 @@ This website is aimed to record my learning experience.
    :maxdepth: 4  
    :caption: Leetcode
 
-   Array<Leetcode_array/index>
+   面试经典150题<leetcode_classic_150/index>
 
 
 .. toctree::  

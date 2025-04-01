@@ -201,40 +201,39 @@ Docker 是一个应用打包、分发、部署的工具.
 
 5. 换源
 
-    参考：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors?accounttraceid=8c9196dd4f79438d8102eceb60df7bf2rtmp
+    参考：
+    - https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors?accounttraceid=8c9196dd4f79438d8102eceb60df7bf2rtmp
+    - https://www.coderjia.cn/archives/dba3f94c-a021-468a-8ac6-e840f85867ea
 
     如果配置代理不生效就换源
 
-    1. 编辑镜像源文件
-
-        ```bash
-        vim /etc/docker/daemon.json
-        ```
-    2. 修改daemon.json 
+    1. 修改daemon.json 
 
         ```json
         sudo tee /etc/docker/daemon.json <<-'EOF'
         {
-        "registry-mirrors": ["https://qjdr63rg.mirror.aliyuncs.com"]
+        "registry-mirrors": [
+            "https://hub.fast360.xyz",
+            "https://dockerpull.cn"
+            ]
         }
         EOF
         ```
-    3. 保存退出
 
-    4. 重新加载服务
+    2. 重新加载服务
 
         ```bash
-        systemctl daemon-reload
+        sudo systemctl daemon-reload
         ```
-    5. 重新启动Docker
+    3. 重新启动Docker
 
         ```bash
-        systemctl restart docker 
+        sudo systemctl restart docker 
         ```
 
-    6. 查看docker镜像源是否改变
+    4. 查看docker镜像源是否改变
 
         ```bash
-        docker info
+        sudo docker info
         ```
 

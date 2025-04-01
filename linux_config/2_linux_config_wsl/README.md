@@ -3,8 +3,6 @@
 
 ## wsl下ubuntu配置python3.8.10虚拟环境
 
-地图数据处理使用
-
 1. 更新包仓库
 
     ```bash
@@ -82,3 +80,34 @@
     cd ~/workspace/uav_competition/for_py
     code .
     ```
+
+## wsl配置代理
+
+- https://blog.csdn.net/iftodayhappy/article/details/137236279
+
+1. 把之前在.bashrc启动文件中配置http_proxy和https_proxy的逻辑删去，并且关闭 WSL
+
+    ```bash
+    wsl --shutdown
+    ```
+
+2. 在我的window主机编辑~\.wslconfig
+“去‘C:\Users\你的名字\’下面新建一个‘.wslconfig’，然后用记事本打开往里面放这些内容”
+
+    如"C:\Users\fangy\\.wslconfig"
+    ```bash
+    [wsl2]
+    memory=8GB
+    processors=8
+    [experimental]
+    autoMemoryReclaim=gradual
+    networkingMode=mirrored
+    dnsTunneling=true
+    firewall=true
+    autoProxy=true
+    sparseVhd=true
+    ```
+
+3. 重启 WSL
+确实自动设置了代理，代理正常工作，
+很好，不必再手动设置http_proxy和https_proxy了。

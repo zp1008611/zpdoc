@@ -64,12 +64,12 @@
     5. 安装依赖包：执行sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev命令
     6. 下载 Python 3.9 的源代码：到官网https://www.python.org/downloads/release/python-390/下载Gzipped source tarball文件
     解压并进入目录：解压下载的源代码包tar -zxvf Python-3.9.0.tgz，然后进入解压后的目录cd Python-3.9.0。
-    7. 配置并编译安装：执行./configure --enable-optimizations和
+    7. 配置并编译安装：执行./configure和
         ```bash
         make -j $(nproc)
         sudo make altinstall
         ```
-    使用make altinstall可避免覆盖系统默认的 Python 版本。
+        使用make altinstall可避免覆盖系统默认的 Python 版本。
     8. 验证：执行python3.9或python3.9 --version检查是否安装成功
 
 2. 安装`coptpy`
