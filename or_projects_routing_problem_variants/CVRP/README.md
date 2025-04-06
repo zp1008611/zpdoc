@@ -168,6 +168,78 @@ $$
 > 基本最短路径体现在：目标函数 $ \bar{s} = \min_{r \in \mathcal{R}} c_r - \sum_{i \in C} \bar{u}_i a_{ri} - \bar{\sigma} $ 本质是在资源约束下寻找成本最低的可行路径.
 
 
+CVRPTW子问题ESPPRC的数学公式表达：
+
+1. 变量定义
+   $$ x_{ij} = 
+   \begin{cases} 
+   1, & \text{如果最短路径中包含弧 } (i,j) \in \mathcal{N}  \times \mathcal{N}  \\
+   0, & \text{否则}
+   \end{cases}
+   $$
+   $ s_i $：到达点 $ i \in \mathcal{N} $ 的时刻
+
+
+2. 数学模型表达式
+
+   - 目标函数
+      $$
+      \min \sum_{i \in \mathcal{N}} \sum_{j \in \mathcal{N}} （c_{ij}-\overline{u}_i)x_{ij} -\overline{\sigma} \quad (1.1)
+      $$
+      目标是最小化路径中所有弧的成本总和. 
+
+   
+   - **容量约束**：
+      $$
+      \sum_{i \in C} q_i \sum_{j \in \mathcal{N}} x_{ij} \leq Q \quad (1.2)
+      $$
+      确保客户节点需求量总和不超过车辆容量 $ Q $. 
+
+   - **从起点出发**：
+      $$
+      \sum_{j \in \mathcal{N}} x_{0j} = 1 \quad (1.3)
+      $$
+      保证路径从起点（节点 $ 0 $）出发. 
+
+   - **流量守恒**：
+      $$
+      \sum_{i \in \mathcal{N}} x_{ih} = \sum_{j \in \mathcal{N}} x_{hj} \quad \forall h \in C \quad (1.4)
+      $$
+      对每个客户节点 $ h $，流入弧的数量等于流出弧的数量. 
+
+   - **到达终点**：
+      $$
+      \sum_{i \in \mathcal{N}} x_{i,n+1} = 1 \quad (1.5)
+      $$
+      确保路径最终到达终点. 
+
+   - **时间约束**：
+      $$
+      s_i + t_{ij} \leq s_j + M_{ij}(1 - x_{ij}) \quad \forall i \in \mathcal{N}, \forall j \in \mathcal{N} \quad (1.6)
+      $$
+      利用大 $ M $ 法保证时间逻辑，若弧 $ (i,j) $ 未被选择（$ x_{ij}=0 $），约束自动满足；若被选择（$ x_{ij}=1 $），则保证时间先后关系. 
+
+   - **时间窗约束**：
+      $$
+      a_i \leq s_i \leq b_i \quad \forall i \in \mathcal{N} \quad (1.7)
+      $$
+      确保到达每个节点 $ i $ 的时刻 $ s_i $ 在规定的时间窗 $ [a_i, b_i] $ 内. 
+
+   - **节点自身约束**：
+
+      由于任何节点都不能是自己的前继节点或者后继节点，因此需添加以下约束：
+
+      $$
+      x_{ii} = 0 \quad \forall i \in V \quad (1.9)
+      $$
+
+
+   - **变量取值约束**：
+      $$
+      x_{ij} \in \{0,1\} \quad \forall i \in \mathcal{N}, \forall j \in \mathcal{N} \quad (1.8)
+      $$
+      明确 $ x_{ij} $ 为 0-1 变量. 
+
 
 
 
