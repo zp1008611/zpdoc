@@ -13,6 +13,7 @@ This website is aimed to record my learning experience.
    :caption: 秋招记录
 
    Schedule & Status
+   Resume Q&A
 
 .. toctree::  
    :maxdepth: 4  
@@ -33,12 +34,6 @@ This website is aimed to record my learning experience.
    Time Series Prediction System<ts_sys/index>
    UAV Simulation<uav_simulation/index>
    JavaScript<javascript_learning/index>
-
-.. toctree::  
-   :maxdepth: 4  
-   :caption: Leetcode
-
-   面试经典150题<leetcode_classic_150/index>
 
 
 .. toctree::  
