@@ -7,7 +7,7 @@ def convert_md_to_rst(folder_path):
         for file in files:
             if file.endswith('.md'):
                 md_file_path = os.path.join(root, file)
-                rst_file_name = os.path.splitext(file)[0] + '.rst'
+                rst_file_name = 'index.rst'
                 rst_file_path = os.path.join(root, rst_file_name)
                 try:
                     output = pypandoc.convert_file(md_file_path, 'rst')

@@ -5,23 +5,23 @@ Exact Algorithm
    :maxdepth: 2  
    :caption: Contents  
 
-   Optimality_Conditions<optimality_conditions/README>
-   Dual Theory<dual_theory/README>
-   LP Introduction<LP_intro/README>
-   LP Simplex Method<LP_simplex/README>
-   LP Interior Point Method<LP_interior/README>
-   Column Generation for LP<LP_cg/README>
-   Dantzig-Wolfe Decomposition for LP<LP_dw_decompostition/README>
-   Integer Programming<IP_intro/README>
-   Convex Hull and Valid Inequalities<IP_convex_hull_and_valid_ineq/README>
-   Branch and Bound<IP_branch_and_bound/README>
-   Relaxation<IP_relaxation/README>
-   Cutting Planes<IP_cutting_planes/README>
-   Branch and Cut<IP_branch_and_cut/README>
-   Row and column generation for large-scale models<LP_large_scale_models/README>
-   Dantzig-Wolfe Decomposition for IP<IP_dw_decomposition/README>
-   Branch and Price<IP_branch_and_price/README>
-   Benders Decomposition for IP<IP_beaders_decomposition/README>
+   Optimality_Conditions<optimality_conditions/index>
+   Dual Theory<dual_theory/index>
+   LP Introduction<LP_intro/index>
+   LP Simplex Method<LP_simplex/index>
+   LP Interior Point Method<LP_interior/index>
+   Column Generation for LP<LP_cg/index>
+   Dantzig-Wolfe Decomposition for LP<LP_dw_decompostition/index>
+   Integer Programming<IP_intro/index>
+   Convex Hull and Valid Inequalities<IP_convex_hull_and_valid_ineq/index>
+   Branch and Bound<IP_branch_and_bound/index>
+   Relaxation<IP_relaxation/index>
+   Cutting Planes<IP_cutting_planes/index>
+   Branch and Cut<IP_branch_and_cut/index>
+   Row and column generation for large-scale models<LP_large_scale_models/index>
+   Dantzig-Wolfe Decomposition for IP<IP_dw_decomposition/index>
+   Branch and Price<IP_branch_and_price/index>
+   Benders Decomposition for IP<IP_beaders_decomposition/index>
    
    
 

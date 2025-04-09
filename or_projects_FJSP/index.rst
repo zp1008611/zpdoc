@@ -5,5 +5,5 @@ Job-shop Scheduling Problem
    :maxdepth: 2  
    :caption: Contents  
 
-   FJSP<FJSP/README>
+   FJSP<FJSP/index>
    
