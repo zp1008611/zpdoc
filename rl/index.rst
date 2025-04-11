@@ -5,11 +5,19 @@ Reinforcement learning
    :maxdepth: 2  
    :caption: Contents  
 
+   莫烦RL入门<mofanrl/index>
    Markov Chain Process
-   Q-learning
+   贝尔曼方程
    Sarsa
+   Q-learning
    Policy Gradient
-   Trust Region Policy Optimization
-   Proximal Policy Optimization
+   PPO
+   DQN
+   Actor Critic
+   DDPG
+   TD3
+   
+   
+
    
 

@@ -56,6 +56,7 @@ This website is aimed to record my learning experience.
    :maxdepth: 4  
    :caption: Reinforcement learning
    
+   Principles and Algorithms<rl/index>
 
 .. toctree::  
    :maxdepth: 4  
@@ -66,6 +67,12 @@ This website is aimed to record my learning experience.
    Agent<LLMs_agent/index>
 
 
+.. toctree::  
+   :maxdepth: 4  
+   :caption: Leetcode
+
+   Graph<leetcode_graph/index>
+   
 
    
 
