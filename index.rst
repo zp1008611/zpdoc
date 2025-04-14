@@ -57,6 +57,7 @@ This website is aimed to record my learning experience.
    :caption: Reinforcement learning
    
    Principles and Algorithms<rl/index>
+   rl for vrp<rl_vrp/index>
 
 .. toctree::  
    :maxdepth: 4  
@@ -71,7 +72,7 @@ This website is aimed to record my learning experience.
    :maxdepth: 4  
    :caption: Leetcode
 
-   Graph<leetcode_graph/index>
+   data structures & algorithms<leetcode/index>
    
 
    
